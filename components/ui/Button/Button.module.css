@@ -1,0 +1,14 @@
+.btn {
+}
+
+.btn svg {
+  stroke: currentColor;
+  fill: none;
+}
+
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
