@@ -12,6 +12,7 @@ export default function Logo() {
           alt="Logo"
           width={174}
           height={32}
+          loading="eager"
         />
       </Link>
     </div>
