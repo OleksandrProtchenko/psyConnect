@@ -1,7 +1,37 @@
 :root {
+  --family-body: 'Manrope', sans-serif;
+  --fz-default: 14px;
+  --fz-title: 24px;
+  --fz-text: 14px;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
   --main-green: #0d6c4a;
+  --color-default: #181c1c;
+  --color-subgreen: #0f5238;
+  --color-white: #fff;
+  --color-descr: #404943;
+  --color-subdescr: #707973;
+  --color-background: #f7faf8;
+  --color-body-background: rgba(247, 250, 248, 0.8);
+  --color-border: #bfc9c1;
 
   --transition-default: 0.3s ease-in-out;
+
+  --lh-default: 1.43;
+  --lh-descr: 1.56;
+  --lh-title: 1.17;
+  --ls-default: 0.01em;
+  --ls-title: 0.02em;
+  --ls-subtitle: 0.05em;
+
+  --border-width: 1px;
+  --border-color: #bfc9c1;
+  --border: var(--border-width) solid var(--border-color);
+  --button-border-radius: 8px;
+  --box-shadow-default: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 html {
@@ -15,12 +45,12 @@ body {
 }
 
 body {
+  font-family: var(--family-body);
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-default);
+  background: var(--color-body-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,25 +67,47 @@ a {
 }
 
 .container {
+  padding: 0 16px;
   width: 100%;
   max-width: 375px;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
+  :root {
+    --fz-title: 28px;
+    --fz-text: 16px;
+  }
   .container {
+    padding: 0 24px;
     max-width: 768px;
   }
 }
 
 @media (min-width: 1024px) {
+  :root {
+    --fz-title: 38px;
+    --fz-text: 18px;
+  }
   .container {
+    padding: 0 32px;
     max-width: 1024px;
   }
 }
 
 @media (min-width: 1440px) {
+  :root {
+    --fz-title: 48px;
+    --fz-text: 18px;
+  }
   .container {
+    padding: 0 64px;
     max-width: 1440px;
   }
+}
+
+header {
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background: rgba(247, 250, 248, 0.8);
 }

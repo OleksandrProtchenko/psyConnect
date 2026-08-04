@@ -1,4 +1,22 @@
 .btn {
+  border-radius: 8px;
+  padding: 8px 16px 9px;
+  background: var(--color-body-background);
+
+  font-family: var(--family-body);
+  font-weight: var(--font-medium);
+  font-size: var(--fz-text);
+  line-height: var(--lh-default);
+  letter-spacing: var(--ls-default);
+  text-align: center;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.primary {
+  border: var(--border);
+  border-radius: var(--button-border-radius);
+  padding: 8px 16px;
 }
 
 .btn svg {

@@ -1,0 +1,6 @@
+.headerContainer {
+  padding-top: 19px;
+  padding-bottom: 19px;
+  display: flex;
+  justify-content: space-between;
+}
