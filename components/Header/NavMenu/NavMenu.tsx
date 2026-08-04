@@ -45,7 +45,8 @@ export default function NavMenu({ auth }: NavMenuProps) {
       {auth && (
         <li
           className={`${css.navItem} ${css.navItemFavorite}`}
-          data-active="false"
+          onClick={() => handleClick('favorites')}
+          data-active={activeItem === 'favorites' ? 'true' : 'false'}
         >
           <span className={css.navItemFavoriteText}>Favorites</span> <FaHeart />
         </li>
