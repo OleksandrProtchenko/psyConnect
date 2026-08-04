@@ -1,22 +1,36 @@
 .btn {
-  border-radius: 8px;
-  padding: 8px 16px 9px;
+  border-radius: var(--border-radius-button);
+  padding: 8px 16px;
   background: var(--color-body-background);
 
   font-family: var(--family-body);
   font-weight: var(--font-medium);
-  font-size: var(--fz-text);
+  font-size: var(--fz-default);
   line-height: var(--lh-default);
   letter-spacing: var(--ls-default);
   text-align: center;
-  color: var(--color-text);
+  color: var(--color-default);
   cursor: pointer;
+  border: var(--border);
+  transition:
+    background var(--transition-default),
+    color var(--transition-default);
 }
 
-.primary {
-  border: var(--border);
-  border-radius: var(--button-border-radius);
-  padding: 8px 16px;
+.secondary {
+  background: var(--color-green);
+  color: var(--color-white);
+  border-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.98);
+  transition:
+    background var(--transition-default),
+    transform var(--transition-default),
+    color var(--transition-default);
+  background: var(--color-subgreen);
+  color: var(--color-white);
 }
 
 .btn svg {
@@ -29,4 +43,11 @@
   opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--color-subgreen);
+    color: var(--color-white);
+  }
 }

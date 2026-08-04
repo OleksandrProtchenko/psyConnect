@@ -5,14 +5,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 3px solid var(--main-green);
+  border: 3px solid var(--color-green);
   border-radius: 8px;
 
   .burger {
     position: relative;
     width: 25px;
     height: 3px;
-    background-color: var(--main-green);
+    background-color: var(--color-green);
     transition: background-color var(--transition-default);
     border-radius: 1px;
 
@@ -22,7 +22,7 @@
       position: absolute;
       width: 25px;
       height: 3px;
-      background-color: var(--main-green);
+      background-color: var(--color-green);
       transition: transform var(--transition-default);
       border-radius: 1px;
     }

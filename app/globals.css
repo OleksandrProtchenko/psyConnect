@@ -8,15 +8,18 @@
   --font-semibold: 600;
   --font-bold: 700;
 
-  --main-green: #0d6c4a;
   --color-default: #181c1c;
-  --color-subgreen: #0f5238;
+
   --color-white: #fff;
   --color-descr: #404943;
   --color-subdescr: #707973;
   --color-background: #f7faf8;
   --color-body-background: rgba(247, 250, 248, 0.8);
   --color-border: #bfc9c1;
+  --color-green: #0d6c4a;
+  --color-subgreen: #0f5238;
+  --color-green-hover: #0c4a34;
+  --color-green-active: #0a3425;
 
   --transition-default: 0.3s ease-in-out;
 
@@ -30,7 +33,7 @@
   --border-width: 1px;
   --border-color: #bfc9c1;
   --border: var(--border-width) solid var(--border-color);
-  --button-border-radius: 8px;
+  --border-radius-button: 8px;
   --box-shadow-default: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
