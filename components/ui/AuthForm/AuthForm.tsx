@@ -92,7 +92,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
 
           {status && <p>{status}</p>}
 
-          <AppButton type="submit" disabled={isSubmitting}>
+          <AppButton type="submit" disabled={isSubmitting} variant="secondary">
             {isSignup ? 'Create account' : 'Log In'}
           </AppButton>
         </Form>
