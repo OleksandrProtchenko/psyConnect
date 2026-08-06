@@ -3,7 +3,8 @@
 import { AppButton } from '@/components/ui/Button/Button';
 import css from './Auth.module.css';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Modal from '@/components/Modal/Modal';
+import LoginModal from '@/components/ui/Modal/LoginModal/LoginModal';
+import SignupModal from '@/components/ui/Modal/SignUpModal/SignUpModal';
 
 export default function Auth() {
   const router = useRouter();
@@ -32,22 +33,17 @@ export default function Auth() {
 
   return (
     <div className={css.auth}>
-      <AppButton onClick={openLogin} data-btn="login">
-        Log In
-      </AppButton>
+      <AppButton onClick={openLogin}>Log In</AppButton>
 
-      <AppButton variant="secondary" onClick={openSignup} data-btn="signup">
+      <AppButton variant="secondary" onClick={openSignup}>
         Sign Up
       </AppButton>
 
       {isAuthModalOpen && (
-        <Modal onClose={closeModal}>
-          {authMode === 'login' ? (
-            <p>Login form goes here.</p>
-          ) : (
-            <p>Signup form goes here.</p>
-          )}
-        </Modal>
+        <>
+          {authMode === 'login' && <LoginModal onClose={closeModal} />}
+          {authMode === 'signup' && <SignupModal onClose={closeModal} />}
+        </>
       )}
     </div>
   );
