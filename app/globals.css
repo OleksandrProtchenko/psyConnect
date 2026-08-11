@@ -18,6 +18,7 @@
   --color-body-background: rgba(247, 250, 248, 0.8);
   --color-modal-background: #f1f4f2;
   --color-border: #bfc9c1;
+  --color-link: #003925;
   --color-green: #0d6c4a;
   --color-subgreen: #0f5238;
   --color-green-hover: #0c4a34;
@@ -28,6 +29,7 @@
   --transition-default: 0.3s ease-in-out;
 
   --lh-default: 1.43;
+  --lh-link: 1.5;
   --lh-descr: 1.56;
   --lh-title: 1.17;
   --lh-input: 1.38;
@@ -63,6 +65,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  flex: 1;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -79,6 +85,25 @@ a {
   width: 100%;
   max-width: 375px;
   margin: 0 auto;
+}
+
+.redirectContent {
+  font-size: var(--fz-input);
+  line-height: var(--lh-link);
+  text-align: center;
+  color: var(--color-descr);
+}
+
+.redirectLink {
+  position: relative;
+  color: var(--color-link);
+  transition: color var(--transition-default);
+}
+
+@media (hover: hover) {
+  .redirectLink:hover {
+    color: var(--color-green);
+  }
 }
 
 @media (min-width: 375px) {

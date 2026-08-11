@@ -3,6 +3,7 @@ import { Geist, Manrope } from 'next/font/google';
 import './globals.css';
 import 'modern-normalize/modern-normalize.css';
 import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,7 +32,9 @@ export default function RootLayout({
           <Header />
         </header>
         <main>{children}</main>
-        <footer></footer>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );

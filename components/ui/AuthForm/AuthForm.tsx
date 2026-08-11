@@ -73,7 +73,20 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
                 placeholder="Enter your name"
                 autoComplete="name"
               />
-              <ErrorMessage name="name" component="div" />
+              <ErrorMessage name="name">
+                {message => (
+                  <div className={css.error}>
+                    <Icon
+                      name="error"
+                      className={css.errorIcon}
+                      width={12}
+                      height={12}
+                      aria-hidden="true"
+                    />
+                    <span>{message}</span>
+                  </div>
+                )}
+              </ErrorMessage>
             </div>
           )}
 
@@ -89,7 +102,20 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
               placeholder="Enter your email"
               autoComplete="email"
             />
-            <ErrorMessage name="email" component="div" />
+            <ErrorMessage name="email">
+              {message => (
+                <div className={css.error}>
+                  <Icon
+                    name="error"
+                    className={css.errorIcon}
+                    width={12}
+                    height={12}
+                    aria-hidden="true"
+                  />
+                  <span>{message}</span>
+                </div>
+              )}
+            </ErrorMessage>
           </div>
 
           <div className={css.formGroup}>
@@ -108,10 +134,10 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
               {message => (
                 <div className={css.error}>
                   <Icon
-                    name="icon-close"
+                    name="error"
                     className={css.errorIcon}
-                    width={14}
-                    height={14}
+                    width={12}
+                    height={12}
                     aria-hidden="true"
                   />
                   <span>{message}</span>

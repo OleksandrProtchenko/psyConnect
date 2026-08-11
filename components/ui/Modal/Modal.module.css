@@ -13,7 +13,7 @@
 
 .modal {
   position: relative;
-  max-width: 90vw;
+  max-width: 464px;
   max-height: 90vh;
   border-radius: 12px;
   background: var(--color-modal-background);

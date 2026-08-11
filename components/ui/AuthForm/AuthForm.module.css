@@ -1,9 +1,10 @@
 .form {
-  width: 398px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 16px;
+  margin-bottom: 72px;
 }
 .formGroup {
   width: 100%;
