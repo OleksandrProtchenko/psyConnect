@@ -6,7 +6,6 @@ export type AuthFormValues = {
   email: string;
   password: string;
   name?: string;
-  confirmPassword?: string;
 };
 
 export type LoginRequest = {
@@ -18,7 +17,6 @@ export type SignupRequest = {
   name: string;
   email: string;
   password: string;
-  confirmPassword: string;
 };
 
 export type AuthResponse = {

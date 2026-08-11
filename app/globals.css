@@ -3,6 +3,7 @@
   --fz-default: 14px;
   --fz-title: 24px;
   --fz-text: 14px;
+  --fz-input: 16px;
   --font-regular: 400;
   --font-medium: 500;
   --font-semibold: 600;
@@ -15,17 +16,21 @@
   --color-subdescr: #707973;
   --color-background: #f7faf8;
   --color-body-background: rgba(247, 250, 248, 0.8);
+  --color-modal-background: #f1f4f2;
   --color-border: #bfc9c1;
   --color-green: #0d6c4a;
   --color-subgreen: #0f5238;
   --color-green-hover: #0c4a34;
   --color-green-active: #0a3425;
+  --color-error: #ba1a1a;
+  --color-backdrop: rgba(0, 0, 0, 0.73);
 
   --transition-default: 0.3s ease-in-out;
 
   --lh-default: 1.43;
   --lh-descr: 1.56;
   --lh-title: 1.17;
+  --lh-input: 1.38;
   --ls-default: 0.01em;
   --ls-title: 0.02em;
   --ls-subtitle: 0.05em;
@@ -74,6 +79,12 @@ a {
   width: 100%;
   max-width: 375px;
   margin: 0 auto;
+}
+
+@media (min-width: 375px) {
+  .container {
+    max-width: 767.7px;
+  }
 }
 
 @media (min-width: 768px) {

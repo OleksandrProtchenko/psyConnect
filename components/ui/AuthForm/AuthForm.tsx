@@ -3,8 +3,10 @@
 import { AppButton } from '@/components/ui/Button/Button';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '@/schemas/auth/login';
-import { signupSchema } from '@/schemas/auth/signin';
+import { signupSchema } from '@/schemas/auth/signup';
 import type { AuthFormValues, AuthMode } from '@/types/auth/auth';
+import { Icon } from '@/components/ui/Icon/Icon';
+import css from './AuthForm.module.css';
 
 type AuthFormProps = {
   mode: AuthMode;
@@ -15,7 +17,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
   const isSignup = mode === 'signup';
 
   const initialValues: AuthFormValues = isSignup
-    ? { name: '', email: '', password: '', confirmPassword: '' }
+    ? { name: '', email: '', password: '' }
     : { email: '', password: '' };
 
   const validationSchema = isSignup ? signupSchema : loginSchema;
@@ -57,38 +59,66 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
       }}
     >
       {({ isSubmitting, status }) => (
-        <Form>
+        <Form className={css.form}>
           {isSignup && (
-            <div>
-              <label htmlFor="name">Name</label>
-              <Field id="name" name="name" />
+            <div className={css.formGroup}>
+              <label className={css.formLabel} htmlFor="name">
+                Name
+              </label>
+              <Field
+                type="text"
+                className={css.formInput}
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                autoComplete="name"
+              />
               <ErrorMessage name="name" component="div" />
             </div>
           )}
 
-          <div>
-            <label htmlFor="email">Email</label>
-            <Field id="email" name="email" type="email" />
+          <div className={css.formGroup}>
+            <label className={css.formLabel} htmlFor="email">
+              Email
+            </label>
+            <Field
+              className={css.formInput}
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              autoComplete="email"
+            />
             <ErrorMessage name="email" component="div" />
           </div>
 
-          <div>
-            <label htmlFor="password">Password</label>
-            <Field id="password" name="password" type="password" />
-            <ErrorMessage name="password" component="div" />
+          <div className={css.formGroup}>
+            <label className={css.formLabel} htmlFor="password">
+              {isSignup ? 'Create a password' : 'Enter your password'}
+            </label>
+            <Field
+              className={css.formInput}
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              autoComplete="password"
+            />
+            <ErrorMessage name="password">
+              {message => (
+                <div className={css.error}>
+                  <Icon
+                    name="icon-close"
+                    className={css.errorIcon}
+                    width={14}
+                    height={14}
+                    aria-hidden="true"
+                  />
+                  <span>{message}</span>
+                </div>
+              )}
+            </ErrorMessage>
           </div>
-
-          {isSignup && (
-            <div>
-              <label htmlFor="confirmPassword">Confirm password</label>
-              <Field
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-              />
-              <ErrorMessage name="confirmPassword" component="div" />
-            </div>
-          )}
 
           {status && <p>{status}</p>}
 

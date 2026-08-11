@@ -5,7 +5,7 @@
   z-index: 9999;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: var(--color-backdrop);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,35 +15,37 @@
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
-  border-radius: 8px;
-  background-color: #fff;
-  padding: 24px;
+  border-radius: 12px;
+  background: var(--color-modal-background);
+  padding: 32px;
+  border: 1px solid rgba(191, 201, 193, 0.3);
 }
 
 .closeButton {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #fff;
+  top: 24px;
+  right: 24px;
   border: none;
-  border-radius: 4px;
   width: 32px;
   height: 32px;
-  font-size: 20px;
-  line-height: 0;
-  color: #333;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  color: var(--color-subdescr);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  background: transparent;
+  transition: color var(--transition-default);
 }
 
-.closeButton:hover {
-  background: #f2f2f2;
+@media (hover: hover) {
+  .closeButton:hover {
+    color: var(--color-green);
+  }
 }
 
-.closeButton:focus {
-  outline: 2px solid #007bff;
+.closeIcon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }

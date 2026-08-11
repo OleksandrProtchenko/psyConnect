@@ -13,10 +13,14 @@
 }
 
 .navItem {
+  position: relative;
   cursor: pointer;
 }
 
 .navItem::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
   content: '';
   display: block;
   width: 0;

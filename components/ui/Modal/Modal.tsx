@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 import css from './Modal.module.css';
 import { useEffect } from 'react';
+import { Icon } from '../Icon/Icon';
 
 interface ModalProps {
   onClose: () => void;
@@ -43,7 +44,12 @@ export default function Modal({ onClose, children }: ModalProps) {
           onClick={onClose}
           aria-label="Close modal"
         >
-          &times;
+          <Icon
+            className={css.closeIcon}
+            name="icon-close"
+            width={14}
+            height={14}
+          />
         </button>
         {children}
       </div>
