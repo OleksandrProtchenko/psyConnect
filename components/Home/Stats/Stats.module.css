@@ -1,0 +1,36 @@
+.heroStatsList {
+  border-bottom: var(--border-line);
+  border-top: var(--border-line);
+  margin-bottom: 102px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 0px;
+  gap: 186px;
+}
+
+.heroStatsItemTitle {
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-subtitle);
+  line-height: var(--lh-subtitle);
+  letter-spacing: var(--ls-default);
+  text-align: center;
+  color: var(--color-green);
+  margin-bottom: 8px;
+}
+
+.heroStatsItemDescription {
+  font-weight: var(--font-medium);
+  font-size: var(--fz-default);
+  line-height: var(--lh-descr);
+  letter-spacing: var(--ls-subtitle);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-subdescr);
+}
+
+.heroStatsItem:not(:first-child) {
+  border-left: var(--border-line);
+  padding-left: 16px;
+}
