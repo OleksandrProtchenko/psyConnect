@@ -1,9 +1,16 @@
+'use client';
+
 import { Icon } from '@/components/ui/Icon/Icon';
 import Image from 'next/image';
 import { AppButton } from '@/components/ui/Button/Button';
 import css from './Hero.module.css';
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
+  const router = useRouter();
+  const handleGetStartedClick = () => {
+    router.push('/psychologists');
+  };
   return (
     <div className={css.heroWrapper}>
       <div className={`container ${css.heroContainer}`}>
@@ -19,7 +26,11 @@ export default function Hero() {
             Connect with licensed therapists and coaches who understand your
             needs. Start your journey to better mental health today.
           </p>
-          <AppButton className={css.heroBtn} variant="secondary">
+          <AppButton
+            className={css.heroBtn}
+            variant="secondary"
+            onClick={handleGetStartedClick}
+          >
             Get Started <Icon className={css.heroBtnIcon} name="arrow-btn" />
           </AppButton>
         </div>

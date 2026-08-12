@@ -151,3 +151,20 @@
   height: 19px;
   fill: var(--color-rating);
 }
+
+@media (min-width: 768px) {
+  .heroWrapper {
+  }
+
+  .heroContent {
+  }
+
+  .heroTag {
+  }
+
+  .heroTitle {
+  }
+
+  .heroDescription {
+  }
+}

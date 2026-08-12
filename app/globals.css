@@ -3,6 +3,7 @@
   --fz-default: 14px;
   --fz-title: 24px;
   --fz-subtitle: 32px;
+  --fz-modal-title: 24px;
   --fz-text: 14px;
   --fz-input: 16px;
   --font-regular: 400;
@@ -105,6 +106,21 @@ a {
   position: relative;
   color: var(--color-link);
   transition: color var(--transition-default);
+}
+
+.modalTitle {
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-modal-title);
+  line-height: var(--lh-tag);
+  color: var(--color-link);
+  margin-bottom: 8px;
+}
+
+.modalDescription {
+  font-size: var(--fz-input);
+  line-height: var(--lh-link);
+  color: var(--color-descr);
+  margin-bottom: 32px;
 }
 
 @media (hover: hover) {

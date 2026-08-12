@@ -11,8 +11,8 @@ type Props = {
 export default function LoginModal({ onClose }: Props) {
   return (
     <Modal onClose={onClose}>
-      <h2 className={css.loginTitle}>Welcome Back</h2>
-      <p className={css.loginDescription}>
+      <h2 className="modalTitle">Welcome Back</h2>
+      <p className="modalDescription">
         Log in to access your favorites and bookings.
       </p>
       <AuthForm mode="login" onSuccess={onClose} />

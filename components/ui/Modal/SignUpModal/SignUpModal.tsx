@@ -13,8 +13,8 @@ type Props = {
 export default function SignUpModal({ onClose }: Props) {
   return (
     <Modal onClose={onClose}>
-      <h2 className={css.signUpTitle}>Create an Account</h2>
-      <p className={css.signUpDescription}>
+      <h2 className={`modalTitle ${css.signUpTitle}`}>Create an Account</h2>
+      <p className={`modalDescription ${css.signUpDescription}`}>
         Join PsyConnect to save your favorite specialists and book sessions.
       </p>
       <AuthForm mode="signup" onSuccess={onClose} />
