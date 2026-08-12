@@ -24,6 +24,8 @@
   --color-green-hover: #0c4a34;
   --color-green-active: #0a3425;
   --color-error: #ba1a1a;
+  --color-rating: #eab308;
+
   --color-backdrop: rgba(0, 0, 0, 0.73);
 
   --transition-default: 0.3s ease-in-out;
@@ -33,6 +35,7 @@
   --lh-descr: 1.56;
   --lh-title: 1.17;
   --lh-input: 1.38;
+  --lh-tag: 1.33;
   --ls-default: 0.01em;
   --ls-title: 0.02em;
   --ls-subtitle: 0.05em;
