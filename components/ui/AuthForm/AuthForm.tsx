@@ -72,6 +72,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
                 name="name"
                 placeholder="Enter your name"
                 autoComplete="name"
+                autoCapitalize="off"
               />
               <ErrorMessage name="name">
                 {message => (
@@ -101,6 +102,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
               type="email"
               placeholder="Enter your email"
               autoComplete="email"
+              autoCapitalize="off"
             />
             <ErrorMessage name="email">
               {message => (
@@ -129,6 +131,7 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
               type="password"
               placeholder="Enter your password"
               autoComplete="password"
+              autoCapitalize="off"
             />
             <ErrorMessage name="password">
               {message => (

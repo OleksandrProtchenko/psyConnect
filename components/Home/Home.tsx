@@ -4,9 +4,9 @@ import Stats from './Stats/Stats';
 
 export default function Home() {
   return (
-    <div className={css.homeWrapper}>
+    <section className={css.homeWrapper} aria-label="Home page">
       <Hero />
       <Stats />
-    </div>
+    </section>
   );
 }
