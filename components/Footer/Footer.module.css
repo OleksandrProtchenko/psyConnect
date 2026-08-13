@@ -58,7 +58,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--transition-default);
+  transition:
+    color var(--transition-default),
+    transform var(--transition-default);
 }
 
 .socialIcon {
@@ -71,6 +73,11 @@
   .socialLink:hover {
     color: var(--color-green);
   }
+}
+
+.socialLink:active {
+  transform: scale(0.9);
+  color: var(--color-subgreen);
 }
 
 @media (min-width: 375px) {
