@@ -2,11 +2,7 @@
 
 import css from './BurgerMenu.module.css';
 
-interface BurgerMenuProps {
-  desktop: boolean;
-}
-
-export default function BurgerMenu({ desktop }: BurgerMenuProps) {
+export default function BurgerMenu() {
   const handleClick = () => {
     const iconBurger = document.querySelector(`.${css.burger}`);
     if (iconBurger) {
@@ -14,8 +10,6 @@ export default function BurgerMenu({ desktop }: BurgerMenuProps) {
       iconBurger.setAttribute('data-active', (!isActive).toString());
     }
   };
-
-  if (desktop) return null;
 
   return (
     <button

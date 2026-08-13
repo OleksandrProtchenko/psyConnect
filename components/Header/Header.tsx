@@ -16,11 +16,7 @@ export default function Header() {
     <div className={`container ${css.headerContainer}`}>
       <Logo />
       {isDesktopOrLaptop && <NavMenu auth={auth} />}
-      {isDesktopOrLaptop ? (
-        <BurgerMenu desktop={true} />
-      ) : (
-        <BurgerMenu desktop={false} />
-      )}
+      {!isDesktopOrLaptop && <BurgerMenu />}
       {isDesktopOrLaptop && <Auth />}
     </div>
   );
