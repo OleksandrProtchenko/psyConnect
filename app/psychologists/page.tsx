@@ -2,13 +2,16 @@ import PsychologistsPageTitle from '@/components/Psychologists/PsychologistsPage
 import FilterBar from '@/components/Psychologists/FilterBar/FilterBar';
 import PsychologistsList from '@/components/Psychologists/PsychologistsList/PsychologistsList';
 import css from './page.module.css';
+import { Suspense } from 'react';
 
 export default function PsychologistsPage() {
   return (
     <section className={css.psychologistsPage} aria-label="Psychologists page">
       <div className="container">
         <PsychologistsPageTitle />
-        <FilterBar />
+        <Suspense fallback={<div>Loading filters...</div>}>
+          <FilterBar />
+        </Suspense>
         <PsychologistsList />
       </div>
     </section>
