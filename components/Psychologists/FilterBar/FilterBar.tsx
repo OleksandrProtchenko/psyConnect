@@ -9,6 +9,7 @@ import {
   approaches,
 } from '@/types/psychologists/psychologists';
 import { useQueryClient } from '@tanstack/react-query';
+import { Icon } from '@/components/ui/Icon/Icon';
 
 const PRICE_OPTIONS = ['50', '100'];
 
@@ -29,7 +30,9 @@ export default function FilterBar() {
   const updateFilter = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
 
-    if (value) {
+    if (value === 'All') {
+      params.delete(key);
+    } else if (value) {
       params.set(key, value);
     } else {
       params.delete(key);
@@ -47,36 +50,38 @@ export default function FilterBar() {
   );
 
   return (
-    <div className={css.filterBar}>
-      <div className={css.filterTitle}>
-        <FaFilter />
+    <div className={css.filterBarWrapper}>
+      <div className={css.filterBarTitle}>
+        <Icon className={css.filterIcon} name="filters" />
         <span>Filters</span>
       </div>
 
-      <FilterDropDown
-        label="Specialization"
-        options={specializations}
-        value={searchParams.get('specialization') ?? ''}
-        onChange={value => updateFilter('specialization', value)}
-      />
-      <FilterDropDown
-        label="Therapeutic Approach"
-        options={approaches}
-        value={searchParams.get('approach') ?? ''}
-        onChange={value => updateFilter('approach', value)}
-      />
-      <FilterDropDown
-        label="Price per Session"
-        options={PRICE_OPTIONS}
-        value={searchParams.get('price_max') ?? ''}
-        onChange={value => updateFilter('price_max', value)}
-      />
+      <div className={css.filterControls}>
+        <FilterDropDown
+          label="Specialization"
+          options={specializations}
+          value={searchParams.get('specialization') ?? ''}
+          onChange={value => updateFilter('specialization', value)}
+        />
+        <FilterDropDown
+          label="Therapeutic Approach"
+          options={approaches}
+          value={searchParams.get('approach') ?? ''}
+          onChange={value => updateFilter('approach', value)}
+        />
+        <FilterDropDown
+          label="Price per Session"
+          options={PRICE_OPTIONS}
+          value={searchParams.get('price_max') ?? ''}
+          onChange={value => updateFilter('price_max', value)}
+        />
+      </div>
 
       {hasActiveFilters && (
         <button
           type="button"
           onClick={clearFilters}
-          className={css.clearButton}
+          className={css.filterClearBtn}
         >
           Clear Filters
         </button>

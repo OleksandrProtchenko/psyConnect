@@ -1,0 +1,42 @@
+.filterBarWrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border: var(--border-line);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--box-shadow-default);
+  background: var(--color-white);
+}
+.filterBarTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-default);
+  line-height: var(--lh-default);
+  letter-spacing: var(--ls-default);
+  color: var(--color-descr);
+}
+
+.filterIcon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.filterControls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.filterClearBtn {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: #0f5238;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}

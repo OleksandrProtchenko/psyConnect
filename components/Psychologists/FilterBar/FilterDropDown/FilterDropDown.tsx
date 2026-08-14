@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import css from './FilterDropDown.module.css';
+import { Icon } from '@/components/ui/Icon/Icon';
 
 interface FilterDropDownProps<T extends string> {
   label: string;
@@ -24,26 +25,61 @@ export default function FilterDropDown<T extends string>({
   };
 
   return (
-    <div className={css.dropdown}>
+    <div className={css.dropdownWrapper}>
       <button
         type="button"
-        className={css.dropdownToggle}
+        className={css.dropdownToggleBtn}
         onClick={() => setIsOpen(prev => !prev)}
         aria-expanded={isOpen}
       >
-        {value || label}
+        {value || label} <Icon className={css.dropdownIcon} name="arrow" />
       </button>
 
       {isOpen && (
-        <ul className={css.dropdownList}>
-          {options.map(option => (
-            <li className={css.dropdownItem} key={option}>
-              <button type="button" onClick={() => handleSelect(option)}>
-                {option}
-              </button>
+        <div className={css.dropdownList}>
+          <ul className={css.dropdownScroll}>
+            <li
+              className={`${css.dropdownItem} ${
+                value === '' ? css.selectedItem : ''
+              }`}
+              onClick={() => handleSelect('' as T)}
+            >
+              <span>All</span>
+
+              {value === '' && (
+                <Icon
+                  name="select-item"
+                  className={css.checkmark}
+                  aria-hidden="true"
+                />
+              )}
             </li>
-          ))}
-        </ul>
+
+            {options.map(option => {
+              const isSelected = option === value;
+
+              return (
+                <li
+                  className={`${css.dropdownItem} ${
+                    isSelected ? css.selectedItem : ''
+                  }`}
+                  key={option}
+                  onClick={() => handleSelect(option)}
+                >
+                  <span>{option}</span>
+
+                  {isSelected && (
+                    <Icon
+                      name="select-item"
+                      className={css.checkmark}
+                      aria-hidden="true"
+                    />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       )}
     </div>
   );
