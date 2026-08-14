@@ -3,23 +3,23 @@
 import { useState } from 'react';
 import css from './FilterDropDown.module.css';
 
-interface FilterDropDownProps {
+interface FilterDropDownProps<T extends string> {
   label: string;
-  options: string[];
-  value: string;
-  onChange: (value: string) => void;
+  options: readonly T[];
+  value: T | '';
+  onChange: (value: T | '') => void;
 }
 
-export default function FilterDropDown({
+export default function FilterDropDown<T extends string>({
   label,
   options,
   value,
   onChange,
-}: FilterDropDownProps) {
+}: FilterDropDownProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (option: string) => {
-    onChange(option === value ? '' : option); // повторный клик — сброс
+  const handleSelect = (option: T) => {
+    onChange(option === value ? '' : option);
     setIsOpen(false);
   };
 
@@ -29,6 +29,7 @@ export default function FilterDropDown({
         type="button"
         className={css.dropdownToggle}
         onClick={() => setIsOpen(prev => !prev)}
+        aria-expanded={isOpen}
       >
         {value || label}
       </button>
@@ -36,7 +37,7 @@ export default function FilterDropDown({
       {isOpen && (
         <ul className={css.dropdownList}>
           {options.map(option => (
-            <li key={option}>
+            <li className={css.dropdownItem} key={option}>
               <button type="button" onClick={() => handleSelect(option)}>
                 {option}
               </button>

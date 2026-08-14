@@ -72,3 +72,19 @@ export const approaches = [
 
 export type Specialization = (typeof specializations)[number];
 export type Approach = (typeof approaches)[number];
+
+export type Psychologist = {
+  _id: string;
+  name: string;
+  avatar_url: string;
+  specialization: Specialization[];
+  approaches: Approach[];
+  languages: string[];
+  price_per_hour: number;
+  experience_years: number;
+  rating: number;
+  reviews: { reviewer: string; rating: number; comment: string }[];
+  about: string;
+  conditions: string[];
+  initial_consultation: boolean;
+};

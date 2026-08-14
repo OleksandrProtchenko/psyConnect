@@ -1,19 +1,55 @@
-import PsychologistsPageTitle from '@/components/Psychologists/PsychologistsPageTitle/PsychologistsPageTitle';
-import FilterBar from '@/components/Psychologists/FilterBar/FilterBar';
-import PsychologistsList from '@/components/Psychologists/PsychologistsList/PsychologistsList';
-import css from './page.module.css';
+import { getPsychologists } from '@/lib/api/psychologists/api';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
+import ClientPage from './clientPage';
 import { Suspense } from 'react';
 
-export default function PsychologistsPage() {
+interface PsychologistsPageProps {
+  searchParams: Promise<{
+    specialization?: string;
+    approach?: string;
+    price_max?: string;
+    limit?: string;
+  }>;
+}
+
+export default async function PsychologistsPage({
+  searchParams,
+}: PsychologistsPageProps) {
+  const params = await searchParams;
+  const limit = Number(params.limit ?? 4);
+
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchInfiniteQuery({
+    queryKey: [
+      'psychologists',
+      {
+        specialization: params.specialization,
+        approach: params.approach,
+        priceMax: params.price_max ? Number(params.price_max) : undefined,
+        limit,
+      },
+    ],
+    queryFn: ({ pageParam }) =>
+      getPsychologists({
+        specialization: params.specialization,
+        approach: params.approach,
+        priceMax: params.price_max ? Number(params.price_max) : undefined,
+        page: pageParam,
+        limit,
+      }),
+    initialPageParam: 1,
+  });
+
   return (
-    <section className={css.psychologistsPage} aria-label="Psychologists page">
-      <div className="container">
-        <PsychologistsPageTitle />
-        <Suspense fallback={<div>Loading filters...</div>}>
-          <FilterBar />
-        </Suspense>
-        <PsychologistsList />
-      </div>
-    </section>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Suspense fallback={<div>Loading psychologists...</div>}>
+        <ClientPage />
+      </Suspense>
+    </HydrationBoundary>
   );
 }

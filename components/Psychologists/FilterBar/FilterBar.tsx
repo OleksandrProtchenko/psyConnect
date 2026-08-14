@@ -4,15 +4,27 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { FaFilter } from 'react-icons/fa';
 import FilterDropDown from './FilterDropDown/FilterDropDown';
 import css from './FilterBar.module.css';
+import {
+  specializations,
+  approaches,
+} from '@/types/psychologists/psychologists';
+import { useQueryClient } from '@tanstack/react-query';
 
-const SPECIALIZATION_OPTIONS = ['Anxiety', 'Depression', 'Relationships'];
-const APPROACH_OPTIONS = ['CBT', 'Psychoanalysis', 'Gestalt'];
-const PRICE_OPTIONS = ['50', '100', '150'];
+const PRICE_OPTIONS = ['50', '100'];
 
 export default function FilterBar() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const queryClient = useQueryClient();
+
+  const navigateWithReset = (url: string) => {
+    queryClient.removeQueries({
+      queryKey: ['psychologists'],
+    });
+
+    router.push(url);
+  };
 
   const updateFilter = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -22,13 +34,12 @@ export default function FilterBar() {
     } else {
       params.delete(key);
     }
-    params.set('page', '1'); // сброс пагинации при смене фильтра
 
-    router.push(`${pathname}?${params.toString()}`);
+    navigateWithReset(`${pathname}?${params.toString()}`);
   };
 
   const clearFilters = () => {
-    router.push(pathname); // без query-параметров вообще
+    navigateWithReset(pathname);
   };
 
   const hasActiveFilters = ['specialization', 'approach', 'price_max'].some(
@@ -44,13 +55,13 @@ export default function FilterBar() {
 
       <FilterDropDown
         label="Specialization"
-        options={SPECIALIZATION_OPTIONS}
+        options={specializations}
         value={searchParams.get('specialization') ?? ''}
         onChange={value => updateFilter('specialization', value)}
       />
       <FilterDropDown
         label="Therapeutic Approach"
-        options={APPROACH_OPTIONS}
+        options={approaches}
         value={searchParams.get('approach') ?? ''}
         onChange={value => updateFilter('approach', value)}
       />
