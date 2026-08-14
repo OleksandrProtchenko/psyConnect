@@ -3,6 +3,7 @@
 import { FaHeart } from 'react-icons/fa';
 import css from './NavMenu.module.css';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface NavMenuProps {
   auth: boolean;
@@ -11,8 +12,11 @@ interface NavMenuProps {
 export default function NavMenu({ auth }: NavMenuProps) {
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
+  const router = useRouter();
+
   const handleClick = (item: string) => {
     setActiveItem(item);
+    router.push(`/${item === 'home' ? '' : item}`);
     localStorage.setItem('activeNavItem', item);
   };
 
