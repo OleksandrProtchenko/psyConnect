@@ -1,5 +1,6 @@
 :root {
   --family-body: 'Manrope', sans-serif;
+  --fz-small: 12px;
   --fz-default: 14px;
   --fz-title: 24px;
   --fz-subtitle: 32px;
@@ -19,6 +20,7 @@
   --color-background: #f7faf8;
   --color-body-background: rgba(247, 250, 248, 0.8);
   --color-modal-background: #f1f4f2;
+  --color-bg-tag: #ebeeed;
   --color-border: #bfc9c1;
   --color-link: #003925;
   --color-green: #0d6c4a;
@@ -27,6 +29,8 @@
   --color-green-active: #0a3425;
   --color-error: #ba1a1a;
   --color-rating: #eab308;
+  --color-free-consultation: #19724f;
+  --color-free-consultation-bg: #a0f4c8;
 
   --color-backdrop: rgba(0, 0, 0, 0.73);
 
@@ -49,6 +53,8 @@
   --border: var(--border-width) solid var(--border-color);
   --border-line: var(--border-width) solid var(--border-color-line);
   --border-radius-button: 8px;
+  --border-radius-tags: 9999px;
+  --border-radius-card: 12px;
   --box-shadow-default: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 

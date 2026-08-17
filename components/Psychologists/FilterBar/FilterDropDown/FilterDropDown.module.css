@@ -3,6 +3,7 @@
   align-items: center;
   gap: 16px;
   position: relative;
+  flex-grow: 1;
 }
 .dropdownToggleBtn {
   display: flex;
@@ -10,11 +11,11 @@
   justify-content: space-between;
   border-radius: 8px;
   padding: 8px 16px;
-  width: 350px;
   height: 40px;
   outline: transparent;
   border: 1px solid transparent;
   cursor: pointer;
+  width: 100%;
 }
 .dropdownIcon {
   width: 12px;

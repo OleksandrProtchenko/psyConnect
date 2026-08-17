@@ -1,12 +1,17 @@
 .cardWrapper {
   position: relative;
   display: flex;
+  align-self: flex-start;
   width: calc((100% - 24px) / 2);
-  min-height: 353px;
+  height: auto;
+  min-height: 328px;
   background: var(--color-white);
-  border-radius: 12px;
+  border-radius: var(--border-radius-card);
   box-shadow: 0 2px 8px 0 rgba(45, 106, 79, 0.04);
   padding: 56px 24px 18px;
+}
+.cardContent {
+  width: 100%;
 }
 .cardFavoriteIconWrapper {
   position: absolute;
@@ -24,9 +29,285 @@
   position: absolute;
   top: 16px;
   left: 16px;
-  background-color: #4caf50;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 12px;
+  box-shadow: var(--box-shadow-default);
+  background: var(--color-free-consultation-bg);
+  border-radius: var(--border-radius-tags);
+  padding: 4px 11px;
+  width: 148px;
+  height: 24px;
+  color: var(--color-free-consultation);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-small);
+  line-height: var(--lh-tag);
+  letter-spacing: var(--ls-subtitle);
+  color: var(--color-free-consultation);
+}
+.freeConsultationIcon {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+.cardHeader {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cardImageWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--border-radius-tags);
+  overflow: hidden;
+}
+
+.cardImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cardInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardInfoTitle {
+  font-size: var(--fz-modal-title);
+  line-height: var(--lh-tag);
+}
+
+.cardInfoStats,
+.cardInfoSpecializationList,
+.cardInfoConditionsList,
+.cardApproachList {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  flex-wrap: wrap;
+
+  font-weight: var(--font-medium);
+  font-size: var(--fz-default);
+  line-height: var(--lh-default);
+  letter-spacing: var(--ls-default);
+}
+.cardRating,
+.cardExperience,
+.cardLanguage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cardStatsIcon {
+  width: 12px;
+  height: 12px;
+}
+.ratingIcon {
+  width: 14px;
+  height: 14px;
+  fill: #fbbf24;
+}
+.experienceIcon,
+.languageIcon {
+  fill: var(--color-subdescr);
+}
+.cardLanguage::before,
+.cardExperience::before {
+  position: absolute;
+  top: 50%;
+  left: -14px;
+  transform: translateY(-50%);
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: var(--border-radius-tags);
+  background: var(--color-border);
+}
+.cardInfoSpecializationList {
+  gap: 8px;
+}
+.cardInfoSpecializationItem {
+  border-radius: 6px;
+  padding: 4px 8px;
+  background: var(--color-bg-spec);
+}
+.cardBody {
+  margin-bottom: 24px;
+}
+.cardAbout {
+  max-width: 430px;
+  margin-bottom: 16px;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cardInfoConditionsList {
+  gap: 8px;
+}
+.cardInfoConditionItem,
+.cardApproachItem {
+  border: var(--border);
+  border-radius: var(--border-radius-tags);
+  padding: 4px 12px;
+}
+
+.hiddenContent {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 400ms ease,
+    opacity 250ms ease,
+    visibility 400ms ease;
+}
+
+.hiddenContentOpen {
+  max-height: 1000px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.cardApproachWrapper {
+  margin-bottom: 28px;
+}
+
+.cardApproachTitle,
+.cardReviewsTitle,
+.cardReviewAuthorName,
+.cardReviewText {
+  padding-top: 16px;
+  display: block;
+  margin-bottom: 12px;
+
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-default);
+  line-height: var(--lh-default);
+  letter-spacing: var(--ls-default);
+  color: var(--color-descr);
+}
+
+.cardApproachList {
+  gap: 8px;
+}
+
+.cardReviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardApproachItem {
+  background: var(--color-modal-background);
+}
+.cardReviewItem {
+  width: 100%;
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(241, 244, 242, 0.5);
+}
+.cardReviewsTitle {
+  font-weight: var(--font-medium);
+  padding-top: 0;
+}
+
+.cardReviewInfo,
+.cardReviewAuthorWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cardReviewAuthorWrapper {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.cardReviewAuthorName,
+.cardReviewText {
+  font-weight: var(--font-medium);
+  padding-top: 0px;
+  margin-bottom: 0px;
+}
+
+.cardReviewAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-tags);
+  width: 32px;
+  height: 32px;
+  background: var(--color-subgreen);
+  color: var(--color-white);
+
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-small);
+  line-height: var(--lh-tag);
+  letter-spacing: var(--ls-subtitle);
+}
+
+.cardReviewAuthorRating {
+  height: 12px;
+  line-height: 1;
+}
+
+.cardReviewDate {
+  flex-shrink: 1;
+  margin-left: auto;
+
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-small);
+  line-height: var(--lh-tag);
+  letter-spacing: var(--ls-subtitle);
+  color: var(--color-subdescr);
+}
+
+.cardFooter {
+  width: 100%;
+  display: flex;
+  padding-top: 16px;
+  border-top: 1px solid rgba(191, 201, 193, 0.2);
+  justify-content: space-between;
+  align-items: center;
+}
+.cardPrice {
+  font-weight: var(--font-medium);
+  font-size: var(--fz-default);
+  line-height: var(--lh-default);
+  letter-spacing: var(--ls-default);
+}
+.cardPriceValue {
+  font-weight: var(--font-semibold);
+  font-size: var(--fz-modal-title);
+  line-height: var(--lh-tag);
+}
+.cardActionsWrapper {
+  display: flex;
+  gap: 8px;
+}
+.cardActionsBtn {
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cardActionsIcon {
+  width: 12px;
+  height: 8px;
+  transition: transform var(--transition-default);
+}
+.cardActionsBtn[aria-expanded='true'] .cardActionsIcon {
+  transform: rotate(180deg);
 }

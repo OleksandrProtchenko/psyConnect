@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import css from "./Button.module.css";
+import Link from 'next/link';
+import css from './Button.module.css';
 
 interface BaseProps {
   children: React.ReactNode;
   className?: string;
-  variant?: "primary" | "secondary";
+  variant?: 'primary' | 'secondary';
   disabled?: boolean;
   ariaLabel?: string;
 }
@@ -20,14 +20,15 @@ interface LinkProps extends BaseProps {
 
 interface ButtonProps extends BaseProps {
   onClick?: () => void;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
+  ariaExpended?: boolean;
 }
 
 export const AppLink = ({
   children,
   href,
   className,
-  variant = "primary",
+  variant = 'primary',
   target,
   rel,
   disabled = false,
@@ -37,17 +38,17 @@ export const AppLink = ({
   const rootClassName = `
     ${css.btn}
     ${css[variant]}
-    ${disabled ? css.disabled : ""}
-    ${className || ""}
+    ${disabled ? css.disabled : ''}
+    ${className || ''}
   `.trim();
 
   return (
     <Link
-      href={disabled ? "" : href}
+      href={disabled ? '' : href}
       className={rootClassName}
       target={target}
       rel={rel}
-      onClick={(e) => {
+      onClick={e => {
         if (disabled) {
           e.preventDefault();
         }
@@ -64,12 +65,13 @@ export const AppButton = ({
   children,
   onClick,
   className,
-  variant = "primary",
-  type = "button",
+  variant = 'primary',
+  type = 'button',
   disabled = false,
   ariaLabel,
+  ariaExpended,
 }: ButtonProps) => {
-  const rootClassName = `${css.btn} ${css[variant]} ${className || ""}`.trim();
+  const rootClassName = `${css.btn} ${css[variant]} ${className || ''}`.trim();
 
   return (
     <button
@@ -78,6 +80,7 @@ export const AppButton = ({
       className={rootClassName}
       disabled={disabled}
       aria-label={ariaLabel}
+      aria-expanded={ariaExpended}
     >
       {children}
     </button>

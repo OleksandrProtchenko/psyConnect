@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'yourpath',
+        hostname: 'randomuser.me',
         port: '',
         pathname: '/**',
       },

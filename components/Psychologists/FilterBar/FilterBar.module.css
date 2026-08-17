@@ -29,6 +29,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-grow: 1;
 }
 .filterClearBtn {
   font-weight: 500;
