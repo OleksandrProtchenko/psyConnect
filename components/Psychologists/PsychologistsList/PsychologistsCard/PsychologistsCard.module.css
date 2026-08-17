@@ -1,0 +1,32 @@
+.cardWrapper {
+  position: relative;
+  display: flex;
+  width: calc((100% - 24px) / 2);
+  min-height: 353px;
+  background: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 rgba(45, 106, 79, 0.04);
+  padding: 56px 24px 18px;
+}
+.cardFavoriteIconWrapper {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 20px;
+  height: 20px;
+}
+.cardFavoriteIcon {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.freeConsultationWrapper {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: #4caf50;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}

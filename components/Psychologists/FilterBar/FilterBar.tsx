@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { FaFilter } from 'react-icons/fa';
 import FilterDropDown from './FilterDropDown/FilterDropDown';
 import css from './FilterBar.module.css';
 import {

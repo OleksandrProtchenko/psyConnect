@@ -1,5 +1,6 @@
 import type { Psychologist } from '@/types/psychologists/psychologists';
-
+import PsychologistsCard from './PsychologistsCard/PsychologistsCard';
+import css from './PsychologistsList.module.css';
 interface PsychologistsListProps {
   data: {
     items: Psychologist[];
@@ -13,16 +14,10 @@ export default function PsychologistsList({ data }: PsychologistsListProps) {
   console.log(data);
   const { items, total, page, limit } = data;
   return (
-    <div>
+    <ul className={css.psychologistsList}>
       {items.map(psychologist => (
-        <div key={psychologist._id}>
-          <h2>{psychologist.name}</h2>
-          <p>{psychologist.about}</p>
-          {psychologist.approaches.map((approach: string) => (
-            <span key={approach}>{approach}</span>
-          ))}
-        </div>
+        <PsychologistsCard key={psychologist._id} psychologist={psychologist} />
       ))}
-    </div>
+    </ul>
   );
 }
