@@ -2,3 +2,48 @@
   padding-top: 32px;
   padding-bottom: 32px;
 }
+.loadMoreBtn {
+  display: block;
+  margin: 0 auto;
+  font-weight: var(--font-medium);
+  font-size: var(--fz-default);
+  line-height: var(--lh-default);
+  letter-spacing: var(--ls-default);
+  text-align: center;
+  color: var(--color-green);
+  background: transparent;
+
+  border: 2px solid var(--color-green);
+  border-radius: 9999px;
+  padding: 12px 32px;
+  cursor: pointer;
+}
+
+.loader {
+  --color-1: var(--color-green);
+  --size: 1px;
+
+  width: calc(48 * var(--size));
+  height: calc(48 * var(--size));
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  border-top: calc(3 * var(--size)) solid var(--color-1);
+  border-right: calc(3 * var(--size)) solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loadedAllSpecialists {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}

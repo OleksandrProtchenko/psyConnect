@@ -82,13 +82,25 @@ export default function ClientPage() {
           }}
         />
         {hasNextPage && (
-          <button
-            type="button"
-            onClick={() => fetchNextPage()}
-            disabled={isFetchingNextPage}
-          >
-            {isFetchingNextPage ? 'Loading...' : 'Load more'}
-          </button>
+          <>
+            {isFetchingNextPage ? (
+              <span className={css.loader}></span>
+            ) : (
+              <button
+                className={css.loadMoreBtn}
+                type="button"
+                onClick={() => fetchNextPage()}
+                disabled={isFetchingNextPage}
+              >
+                Load more psychologists
+              </button>
+            )}
+          </>
+        )}
+        {!hasNextPage && (
+          <span className={css.loadedAllSpecialists}>
+            You&apos;ve seen all specialists.
+          </span>
         )}
       </div>
     </section>
