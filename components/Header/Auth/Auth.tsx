@@ -29,7 +29,7 @@ export default function Auth() {
 
   const openLogin = () => router.push(buildUrl('login'), { scroll: false });
   const openSignup = () => router.push(buildUrl('signup'), { scroll: false });
-  const closeModal = () => router.replace(buildUrl(), { scroll: false });
+  const closeModal = () => router.back();
 
   return (
     <div className={css.auth}>

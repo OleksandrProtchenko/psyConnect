@@ -1,4 +1,4 @@
-import { NextServer } from '../api';
+import { nextServer } from '../api';
 interface GetPsychologistsParams {
   specialization?: string;
   approach?: string;
@@ -10,7 +10,7 @@ interface GetPsychologistsParams {
 export async function getPsychologists(params: GetPsychologistsParams = {}) {
   const { specialization, approach, priceMax, page = 1, limit = 4 } = params;
 
-  const { data } = await NextServer.get('/api/psychologists', {
+  const { data } = await nextServer.get('/api/psychologists', {
     params: {
       specialization,
       approach,
