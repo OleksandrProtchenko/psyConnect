@@ -17,14 +17,14 @@ export async function POST(request: NextRequest) {
       for (const cookieStr of cookieArray) {
         const parsed = parse(cookieStr);
 
-        const options = {
-          expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
-          path: parsed.Path,
-          maxAge: Number(parsed['Max-Age']),
-        };
-
         if (parsed.accessToken) {
-          cookieStore.set('accessToken', parsed.accessToken, options);
+          cookieStore.set('accessToken', parsed.accessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            path: '/',
+            maxAge: 60 * 60 * 24 * 7,
+          });
         }
       }
       return NextResponse.json(apiRes.data);

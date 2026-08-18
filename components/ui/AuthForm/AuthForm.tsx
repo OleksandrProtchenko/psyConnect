@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 
 import { AppButton } from '@/components/ui/Button/Button';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -7,6 +8,8 @@ import { signupSchema } from '@/schemas/auth/signup';
 import type { AuthFormValues, AuthMode } from '@/types/auth/auth';
 import { Icon } from '@/components/ui/Icon/Icon';
 import css from './AuthForm.module.css';
+import { getMe, login, register } from '@/lib/api/auth/api';
+import { useAuthStore } from '@/store/authStore';
 
 type AuthFormProps = {
   mode: AuthMode;
@@ -14,7 +17,9 @@ type AuthFormProps = {
 };
 
 export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
+  const router = useRouter();
   const isSignup = mode === 'signup';
+  const setUser = useAuthStore.getState().setUser;
 
   const initialValues: AuthFormValues = isSignup
     ? { name: '', email: '', password: '' }
@@ -23,24 +28,33 @@ export default function AuthForm({ mode, onSuccess }: AuthFormProps) {
   const validationSchema = isSignup ? signupSchema : loginSchema;
 
   const handleSubmit = async (values: AuthFormValues) => {
-    const endpoint = isSignup ? '/api/auth/register' : '/api/auth/login';
+    if (isSignup) {
+      if (!values.name) {
+        throw new Error('Name is required');
+      }
 
-    const payload = isSignup
-      ? { name: values.name, email: values.email, password: values.password }
-      : { email: values.email, password: values.password };
+      const payload = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      };
 
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => null);
-      throw new Error(err?.message || 'Request failed');
+      await register(payload);
+      return;
     }
 
+    const payload = {
+      email: values.email,
+      password: values.password,
+    };
+
+    await login(payload);
+
+    const user = await getMe();
+    setUser(user);
+
     onSuccess?.();
+    router.push('/');
   };
 
   return (
